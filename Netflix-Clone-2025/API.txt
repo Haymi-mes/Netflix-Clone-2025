@@ -1,0 +1,3 @@
+API KEY= 7a6324eeccdcd67b11fa2f8c42babf95
+
+https://api.themoviedb.org/3/trending/all/week?api_key=7a6324eeccdcd67b11fa2f8c42babf95&language=en-US
