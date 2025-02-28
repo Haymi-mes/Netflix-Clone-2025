@@ -1,27 +1,23 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "../../../utils/axios";
-// import React, { useRef } from "react";
 
 import movieTrailer from "movie-trailer";
 import YouTube from "react-youtube";
 import "./Row.css";
 
 const Row = ({ title, fetchUrl, isLargeRow }) => {
-  console.log(title);
-  console.log(fetchUrl);
   const [movies, setMovies] = useState([]);
   const [trailerurl, setTrailerUrl] = useState("");
   const base_url = "https://image.tmdb.org/t/p/original";
-  // https://image.tmdb.org/t/p/original/discover/tv?api_key=d6340b0abd4acd7c9728b48e63ed5dd7&with_networks=213
-  // https://api.themoviedb.org/3/discover/tv?api_key=d6340b0abd4acd7c9728b48e63ed5dd7&with_networks=213
+
   useEffect(() => {
     (async () => {
       try {
-        console.log(fetchUrl);
+        // console.log(fetchUrl);
         const request = await axios.get(fetchUrl);
-        console.log(request);
-        console.log(request.data);
-        
+        // console.log(request);
+        // console.log(request.data);
+
         setMovies(request.data.results);
       } catch (error) {
         console.log(error);
@@ -35,9 +31,9 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     } else {
       movieTrailer(movie?.title || movie?.name || movie?.original_name).then(
         (url) => {
-          console.log(url);
+          // console.log(url);
           const urlparams = new URLSearchParams(new URL(url).search);
-          console.log(urlparams);
+          // console.log(urlparams);
           console.log(urlparams.get("v"));
           setTrailerUrl(urlparams.get("v"));
         }
@@ -72,16 +68,14 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
       autoplay: 1,
     },
   };
-  console.log(movies);
+  
   return (
     <div className="row">
       <h1>{title}</h1>
       <div className="row__posters">
         {movies.map((movie, index) => {
-          
           return (
             <>
-         
               <img
                 onClick={() => handleClick(movie)}
                 key={index}

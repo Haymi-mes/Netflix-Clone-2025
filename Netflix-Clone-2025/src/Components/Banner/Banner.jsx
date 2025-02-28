@@ -20,9 +20,9 @@ const Banner = () => {
       }
     })();
   }, []);
-  function truncate(a, b) {
-    //a is the movie? overview and b is 150
-    return a?.length > b ? a.substr(0, b - 1) + "..." : a; // in this case b is 150
+  function truncate(str, n) {
+    //str is the movie? overview and n is 150
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str; // in this case n is 150
   }
   return (
     <>
@@ -40,7 +40,7 @@ const Banner = () => {
             {movie?.title || movie?.name || movie?.original_name}
           </h1>
           <div className="banner_buttons">
-            <button className="banner_button paly">Play</button>
+            <button className="banner_button play">Play</button>
             <button className="banner_button">My List</button>
           </div>
           <h1 className="banner_description">
